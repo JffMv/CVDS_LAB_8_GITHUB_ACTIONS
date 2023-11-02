@@ -3,7 +3,9 @@ package co.edu.escuelaing.cvds.lab7.model;
 import jakarta.persistence.*;
 
 import java.util.Objects;
+import lombok.Builder;
 
+@Builder
 @Entity
 @Table(name = "EMPLOYEE")
 public class Employee {
