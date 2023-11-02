@@ -56,25 +56,29 @@ jobs:
           path: target/site/serenity/           # Path to test results
 
   deploy:
-
     needs: test
     runs-on: ubuntu-latest
- 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    
-    - name: Build message 
-      run:  echo "En construcción ..." 
- 
-    - name: Test Report
-      uses: actions/upload-artifact@v3
-      if: success() || failure()
-      with:
-          name: SpringBoot Report               # Name of the folder
-          path: target/site/serenity/           # Path to test results
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build message
+        run: echo "En construcción ..."
+      - name: Test Report
+        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: SpringBoot Report
+          path: target/site/serenity/
+
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'Nombre-de-tu-Azure-App-Service'
+          slot-name: 'Nombre-del-slot'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./ruta/al/jar.jar
