@@ -68,8 +68,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: List files in target
-        run: ls -R ./target
+
       - name: Build message
         run: echo "En construcción ..."
       - name: Test Report
