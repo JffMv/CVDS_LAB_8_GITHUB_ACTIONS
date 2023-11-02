@@ -80,4 +80,4 @@ jobs:
         with:
           app-name: 'employeeWhithInsights'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ./target/CVDS_LAB_8_GITHUB_ACTIONS.jar
+          package: ./target/*.jar
