@@ -77,11 +77,16 @@ jobs:
         with:
           name: SpringBoot Report
           path: target/site/serenity/
+      - name: Upload JAR artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-jar
+          path: ./target/lab7-0.0.1-SNAPSHOT.jar
 
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'employeeWhithInsights'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ./target/lab7-0.0.1-SNAPSHOT.jar
+          package: target/lab7-0.0.1-SNAPSHOT.jar
 
