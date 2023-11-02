@@ -84,8 +84,5 @@ jobs:
         with:
           app-name: 'employeeWhithInsights'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-<<<<<<< HEAD
           package: target\lab7-0.0.1-SNAPSHOT.jar
-=======
-          package: ./target/*.jar
->>>>>>> 83bad7f5f830015bb5a667b0de3ff964fd543387
+
