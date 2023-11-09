@@ -23,6 +23,14 @@ public class EmployeeController {
         model.addAttribute("lista_objects",lista);
         return  "showAllEmployees";
     }
+
+    @GetMapping("/consult-all-F")
+    public  String consultAllEmployeesFirts(Model model){
+        employeeService.fillEmployees();
+        List<Employee> lista = employeeService.getEmployees();
+        model.addAttribute("lista_objects",lista);
+        return  "showAllEmployees";
+    }
     @GetMapping("/consult-id")
     public String consultById(@RequestParam(name = "id", required = false, defaultValue = "1") long name, boolean modificate,  Model model ){
         Optional<Employee> e = employeeService.getEmployeeById((Long)name);
@@ -41,9 +49,9 @@ public class EmployeeController {
         return "createEmployee";
     }
     @PostMapping("/create-new")
-    public String createEmployee(String firtsName, String lastName, String role, double salary){
+    public String createEmployee(String firtsName, String lastName, String role, double salary, String company, String sex_biology){
         try{
-        Employee e = new Employee(firtsName,lastName, role, salary);
+        Employee e = new Employee(firtsName,lastName, role, salary, company, sex_biology);
         employeeService.saveEmployee(e);
         return "createdSuccessful";
         }catch (Exception e){
@@ -51,9 +59,9 @@ public class EmployeeController {
         }
     }
     @PostMapping("/update-employee")
-    public String updateEmployee(Long id,String firtsName, String lastName, String role, double salary){
+    public String updateEmployee(Long id,String firtsName, String lastName, String role, double salary, String company, String sex_biology){
         try{
-        Employee e = new Employee(id,firtsName,lastName, role, salary);
+        Employee e = new Employee(id,firtsName,lastName, role, salary, company, sex_biology);
         employeeService.saveEmployee(e);
         return "modificateSuccessful";
         }catch (Exception e){

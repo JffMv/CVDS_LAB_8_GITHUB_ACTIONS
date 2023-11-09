@@ -21,8 +21,10 @@ public class Employee {
     private String role;
     @Column(name = "SALARY")
     private double salary;
-
-
+    @Column(name = "COMPANY")
+    private String company;
+    @Column(name = "SEX_BIOLOGY")
+    private String sex_biology;
     //Constructors
     public Employee() {
     }
@@ -30,18 +32,22 @@ public class Employee {
         this.employeeId = employeeId;
     }
 
-    public Employee(Long employeeId, String firtsName, String lastName, String role, double salary) {
+    public Employee(Long employeeId, String firtsName, String lastName, String role, double salary, String company, String sex_biology) {
         this.employeeId = employeeId;
         this.firtsName = firtsName;
         this.lastName = lastName;
         this.role = role;
         this.salary = salary;
+        this.company = company;
+        this.sex_biology= sex_biology;
     }
-    public Employee( String firtsName, String lastName, String role, double salary) {
+    public Employee( String firtsName, String lastName, String role, double salary, String company, String sex_biology) {
         this.firtsName = firtsName;
         this.lastName = lastName;
         this.role = role;
         this.salary = salary;
+        this.company = company;
+        this.sex_biology= sex_biology;
     }
 
 
@@ -66,6 +72,13 @@ public class Employee {
         return salary;
     }
 
+    public String getCompany() {
+        return company;
+    }
+
+    public String getSex_biology() {
+        return sex_biology;
+    }
     // setters
 
 
@@ -89,6 +102,13 @@ public class Employee {
         this.salary = salary;
     }
 
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public void setSex_biology(String sex_biology) {
+        this.sex_biology = sex_biology;
+    }
 
     // equals and hashcode
     @Override
